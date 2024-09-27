@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homepage.css">
+    <title>Book Trade PH</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Book Trade PH</div>
+        <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list">
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle">Products</a>
+                    <ul class="dropdown">
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Discounted Items</a></li>
+                        <li><a href="#">Bundles</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">Contact Us</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Contact Form</a></li>
+                        <li><a href="#">Email Address</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">Buy Books</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Add to Cart</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">Account</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Profile Information</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Privacy Settings</a></li>
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to Book Trade PH</h1>
+    </main>
+    <script>
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                const dropdownMenu = toggle.nextElementSibling; 
+                
+                dropdownToggles.forEach(otherToggle => {
+                    const otherDropdownMenu = otherToggle.nextElementSibling;
+                    if (otherDropdownMenu !== dropdownMenu) {
+                        otherDropdownMenu.classList.remove('active'); 
+                    }
+                });
+                dropdownMenu.classList.toggle('active'); 
+            });
+        });
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                dropdownToggles.forEach(toggle => {
+                    const dropdownMenu = toggle.nextElementSibling;
+                    dropdownMenu.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
